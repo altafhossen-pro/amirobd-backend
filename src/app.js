@@ -85,9 +85,9 @@ app.use('/api/v1', routes);
 app.get('/', (req, res) => {
     return res.status(200).json({
         success: true,
-        message: 'Welcome to Forpink Server',
+        message: 'Welcome to Amiro Server',
         version: '1.0.0',
-        author: 'Forpink',
+        author: 'Amiro',
         ip: req.ip,
         port: process.env.PORT,
         timestamp: new Date().toISOString(),

@@ -2129,7 +2129,7 @@ exports.createGuestOrder = async (req, res) => {
           const totalAmount = order.total.toFixed(2);
 
           // Professional short SMS message
-          const smsMessage = `Forpink: Order #${order.orderId} confirmed. Total: ৳${totalAmount}. Track: ${trackingUrl}`;
+          const smsMessage = `Amiro: Order #${order.orderId} confirmed. Total: ৳${totalAmount}. Track: ${trackingUrl}`;
 
           // Send SMS asynchronously (don't wait for it to complete)
           sendCustomSMS(guestPhone, smsMessage).catch(smsError => {
@@ -2357,7 +2357,7 @@ exports.createManualOrder = async (req, res) => {
           const totalAmount = order.total.toFixed(2);
 
           // Professional short SMS message
-          const smsMessage = `Forpink: Order #${order.orderId} confirmed. Total: ৳${totalAmount}. Track: ${trackingUrl}`;
+          const smsMessage = `Amiro: Order #${order.orderId} confirmed. Total: ৳${totalAmount}. Track: ${trackingUrl}`;
 
           // Send SMS asynchronously (don't wait for it to complete)
           sendCustomSMS(guestInfo.phone, smsMessage).catch(smsError => {

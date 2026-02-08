@@ -25,7 +25,7 @@ const sendEmail = async (to, subject, text, html = null) => {
 
     // Use SMTP_EMAIL as from address to avoid spam (must match authenticated email)
     const fromEmail = process.env.EMAIL_FROM || process.env.SMTP_EMAIL;
-    const fromName = process.env.EMAIL_FROM_NAME || 'Forpink';
+    const fromName = process.env.EMAIL_FROM_NAME || 'Amiro';
 
     const mailOptions = {
       from: `"${fromName}" <${fromEmail}>`, // Proper format: "Name" <email@domain.com>
@@ -65,8 +65,8 @@ const sendEmail = async (to, subject, text, html = null) => {
 // Send OTP email specifically
 const sendOTPEmail = async (email, otp) => {
   // Better subject line to avoid spam filters
-  const subject = 'Your Forpink Verification Code';
-  const text = `Your Forpink verification code is: ${otp}. This code will expire in 5 minutes. Please do not share this code with anyone.`;
+  const subject = 'Your Amiro Verification Code';
+  const text = `Your Amiro verification code is: ${otp}. This code will expire in 5 minutes. Please do not share this code with anyone.`;
 
   const html = `
     <!DOCTYPE html>
@@ -85,7 +85,7 @@ const sendOTPEmail = async (email, otp) => {
               <!-- Header -->
               <tr>
                 <td style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); padding: 40px 40px 30px; text-align: center;">
-                  <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600; letter-spacing: -0.5px;">Forpink</h1>
+                  <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600; letter-spacing: -0.5px;">Amiro</h1>
                   <p style="margin: 8px 0 0; color: #fce7f3; font-size: 14px; font-weight: 400;">Your trusted shopping partner</p>
                 </td>
               </tr>
@@ -95,7 +95,7 @@ const sendOTPEmail = async (email, otp) => {
                 <td style="padding: 40px;">
                   <h2 style="margin: 0 0 20px; color: #1f2937; font-size: 22px; font-weight: 600;">Email Verification</h2>
                   <p style="margin: 0 0 24px; color: #4b5563; font-size: 15px; line-height: 1.6;">
-                    Thank you for registering with Forpink! Your register OTP is:
+                    Thank you for registering with Amiro! Your register OTP is:
                   </p>
                   
                   <!-- OTP Box -->
@@ -111,7 +111,7 @@ const sendOTPEmail = async (email, otp) => {
                   </p>
                   
                   <p style="margin: 20px 0 0; color: #9ca3af; font-size: 13px; line-height: 1.6;">
-                    <strong style="color: #6b7280;">⚠️ Security Notice:</strong> Never share this code with anyone. Forpink will never ask for your OTP.
+                    <strong style="color: #6b7280;">⚠️ Security Notice:</strong> Never share this code with anyone. Amiro will never ask for your OTP.
                   </p>
                 </td>
               </tr>
@@ -123,7 +123,7 @@ const sendOTPEmail = async (email, otp) => {
                     If you didn't request this code, please ignore this email.
                   </p>
                   <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-                    © ${new Date().getFullYear()} Forpink. All rights reserved.
+                    © ${new Date().getFullYear()} Amiro. All rights reserved.
                   </p>
                 </td>
               </tr>
@@ -263,7 +263,7 @@ const sendOrderConfirmationEmail = async (order, user) => {
       "@type": "Order",
       "merchant": {
         "@type": "Organization",
-        "name": "Forpink",
+        "name": "Amiro",
         "url": frontendUrl
       },
       "orderNumber": order.orderId,
@@ -303,7 +303,7 @@ const sendOrderConfirmationEmail = async (order, user) => {
                 <!-- Header -->
                 <tr>
                   <td style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); padding: 40px 40px 30px; text-align: center;">
-                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600; letter-spacing: -0.5px;">Forpink</h1>
+                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600; letter-spacing: -0.5px;">Amiro</h1>
                     <p style="margin: 8px 0 0; color: #fce7f3; font-size: 14px; font-weight: 400;">Your trusted shopping partner</p>
                   </td>
                 </tr>
@@ -406,7 +406,7 @@ const sendOrderConfirmationEmail = async (order, user) => {
                       If you have any questions about your order, please contact our support team.
                     </p>
                     <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-                      © ${new Date().getFullYear()} Forpink. All rights reserved.
+                      © ${new Date().getFullYear()} Amiro. All rights reserved.
                     </p>
                   </td>
                 </tr>
@@ -429,8 +429,8 @@ const sendOrderConfirmationEmail = async (order, user) => {
 const sendWelcomeEmail = async (user, signupBonusCoins = 0) => {
   try {
     const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
-    const subject = 'Welcome to Forpink! 🎉';
-    const text = `Welcome to Forpink, ${user.name}! Thank you for joining us. We're excited to have you as part of our community.${signupBonusCoins > 0 ? ` As a welcome gift, you've received ${signupBonusCoins} coins!` : ''} Start shopping now: ${frontendUrl}`;
+    const subject = 'Welcome to Amiro! 🎉';
+    const text = `Welcome to Amiro, ${user.name}! Thank you for joining us. We're excited to have you as part of our community.${signupBonusCoins > 0 ? ` As a welcome gift, you've received ${signupBonusCoins} coins!` : ''} Start shopping now: ${frontendUrl}`;
     
     const html = `
       <!DOCTYPE html>
@@ -449,7 +449,7 @@ const sendWelcomeEmail = async (user, signupBonusCoins = 0) => {
                 <!-- Header -->
                 <tr>
                   <td style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); padding: 40px 40px 30px; text-align: center;">
-                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600; letter-spacing: -0.5px;">Welcome to Forpink! 🎉</h1>
+                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600; letter-spacing: -0.5px;">Welcome to Amiro! 🎉</h1>
                     <p style="margin: 8px 0 0; color: #fce7f3; font-size: 14px; font-weight: 400;">Your trusted shopping partner</p>
                   </td>
                 </tr>
@@ -459,7 +459,7 @@ const sendWelcomeEmail = async (user, signupBonusCoins = 0) => {
                   <td style="padding: 40px;">
                     <h2 style="margin: 0 0 20px; color: #1f2937; font-size: 22px; font-weight: 600;">Hello, ${user.name || 'Valued Customer'}!</h2>
                     <p style="margin: 0 0 24px; color: #4b5563; font-size: 15px; line-height: 1.6;">
-                      Thank you for joining Forpink! We're thrilled to have you as part of our community. Your account has been successfully created and you're all set to start shopping.
+                      Thank you for joining Amiro! We're thrilled to have you as part of our community. Your account has been successfully created and you're all set to start shopping.
                     </p>
                     
                     ${signupBonusCoins > 0 ? `
@@ -502,7 +502,7 @@ const sendWelcomeEmail = async (user, signupBonusCoins = 0) => {
                       If you have any questions, feel free to contact our support team.
                     </p>
                     <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-                      © ${new Date().getFullYear()} Forpink. All rights reserved.
+                      © ${new Date().getFullYear()} Amiro. All rights reserved.
                     </p>
                   </td>
                 </tr>
