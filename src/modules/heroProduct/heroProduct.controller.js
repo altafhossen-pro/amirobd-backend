@@ -77,7 +77,7 @@ exports.createHeroProduct = async (req, res) => {
       size: size || 'large',
       badge: {
         text: badge?.text || '',
-        color: badge?.color || 'bg-pink-500'
+        color: badge?.color || 'bg-blue-500'
       },
       isActive: isActive !== false,
       order: order || 0
@@ -119,7 +119,7 @@ exports.updateHeroProduct = async (req, res) => {
       size: size || 'large',
       badge: {
         text: badge?.text || '',
-        color: badge?.color || 'bg-pink-500'
+        color: badge?.color || 'bg-blue-500'
       },
       isActive: isActive !== false,
       order: order || 0

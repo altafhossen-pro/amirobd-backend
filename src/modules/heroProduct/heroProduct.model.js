@@ -26,7 +26,7 @@ const heroProductSchema = new mongoose.Schema({
     color: {
       type: String,
       trim: true,
-      default: 'bg-pink-500'
+      default: 'bg-blue-500'
     }
   },
   isActive: {

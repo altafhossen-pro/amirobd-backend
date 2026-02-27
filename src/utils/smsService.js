@@ -72,7 +72,7 @@ const parseStatusCode = (responseData) => {
 const formatPhoneNumber = (phone) => {
   // Remove any spaces, dashes, or special characters
   let cleanPhone = phone.replace(/[\s\-\(\)\+]/g, '');
-  
+
   // If phone doesn't start with 880, add it
   if (!cleanPhone.startsWith('880')) {
     // Remove leading 0 if present (e.g., 01712345678 -> 8801712345678)
@@ -82,7 +82,7 @@ const formatPhoneNumber = (phone) => {
       cleanPhone = '880' + cleanPhone;
     }
   }
-  
+
   return cleanPhone;
 };
 
@@ -166,14 +166,14 @@ const sendSMS = async (phone, message) => {
     // Unknown error code or unexpected response format
     return {
       success: false,
-      error: statusCode 
+      error: statusCode
         ? `SMS API returned error code: ${statusCode}`
         : 'Failed to send SMS - Unexpected response format',
       code: statusCode || null,
     };
   } catch (error) {
     console.error('SMS sending error:', error.message);
-    
+
     // Handle specific error cases
     if (error.code === 'ECONNABORTED') {
       return {
@@ -185,7 +185,7 @@ const sendSMS = async (phone, message) => {
     // If API returned a response with error status
     if (error.response && error.response.data) {
       const statusCode = parseStatusCode(error.response.data);
-      
+
       if (statusCode === 202) {
         // Sometimes 202 might come as error response, but it's actually success
         return {
@@ -193,7 +193,7 @@ const sendSMS = async (phone, message) => {
           message: 'SMS sent successfully',
         };
       }
-      
+
       if (statusCode && ERROR_CODES[statusCode]) {
         return {
           success: false,
@@ -201,7 +201,7 @@ const sendSMS = async (phone, message) => {
           code: statusCode,
         };
       }
-      
+
       return {
         success: false,
         error: `SMS API error: ${error.response.status} - ${error.response.statusText}`,
@@ -221,14 +221,14 @@ const sendSMS = async (phone, message) => {
  * Send OTP SMS with formatted message
  * @param {string} phone - Phone number (receiver)
  * @param {string} otp - OTP code (usually 6 digits)
- * @param {string} brandName - Brand/Company name (optional, defaults to 'forping')
+ * @param {string} brandName - Brand/Company name (optional, defaults to 'Amiro')
  * @returns {Promise<{success: boolean, message?: string, error?: string}>}
  */
 const sendOTPSMS = async (phone, otp, brandName = null) => {
   try {
     // Get brand name from parameter, env variable, or use default
-    const brand = (brandName || process.env.BRAND_NAME || 'Forping').toLowerCase();
-    
+    const brand = (brandName || process.env.BRAND_NAME || 'Amiro').toLowerCase();
+
     // Format message as per requirement
     const message = `Your ${brand} login OTP is ${otp}. This OTP will expire in 2 minutes. Please do NOT share your OTP with others.`;
 
